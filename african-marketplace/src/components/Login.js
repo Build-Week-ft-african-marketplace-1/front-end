@@ -13,14 +13,23 @@ const initialFormErrors = {
 };
 
 export default function Login(props) {
-  const { values, change, submit, errors } = props;
+  const { values, change, submit, errors } = props; //return to this placeholder
 
   const [userValues, setUserValues] = useState(initialUserValues);
+  const [formErrors, setFormErrors] = useState(initialFormErrors);
 
   const onChange = (evt) => {
-    const { name, value } = evt;
-    this.setState;
+    const { name, value } = evt.target;
+    validate(name, value);
+    setUserValues({...userValues, [name]: value});
   };
+
+const validate = (name, value) => {
+    yup.reach(schema, name)
+    .validate(value).then(() => setFormErrors{...formErrors, [name]: ""})
+    .catch((err => setFormErrors({...formErrors, [name]: err.errors[0]})));
+};
+
   const onSubmit = (evt) => {
     evt.preventDefault();
     //   submit();
@@ -41,8 +50,9 @@ export default function Login(props) {
               name="username"
               placeholder="Enter your username"
               type="text"
+              value={userValues.username}
               required
-              onChange
+              onChange={onChange}
             />
           </label>
         </div>
@@ -53,8 +63,9 @@ export default function Login(props) {
               name="password"
               placeholder="Enter your password"
               type="password"
+              value={userValues.password}
               required
-              onChange
+              onChange={onChange}
             />
           </label>
         </div>
