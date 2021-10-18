@@ -7,7 +7,7 @@ import { useHistory } from 'react-router';
 import AddProduct from "./components/AddProduct";
 import EditProductForm from "./components/EditProductForm";
 import EditUserForm from "./components/EditUserForm";
-//import HomePage from "./components/HomePage";
+import HomePage from "./components/HomePage";
 //import Login from "./components/Login";
 //import Logout from "./components/Logout";
 import NavBar from "./components/NavBar";
@@ -25,9 +25,9 @@ function App() {
       <NavBar />
 
       <Switch>
-        {/* <Route exact path="/">
+        <Route exact path="/">
           <HomePage />
-        </Route> */}
+        </Route>
         {/* <Route exact path="/login">
           <Login />
         </Route> */}
