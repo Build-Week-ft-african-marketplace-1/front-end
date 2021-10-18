@@ -11,7 +11,7 @@ import HomePage from "./components/HomePage";
 //import Login from "./components/Login";
 //import Logout from "./components/Logout";
 import NavBar from "./components/NavBar";
-//import PrivateRoute from "./components/PrivateRoute";
+import PrivateRoute from "./components/PrivateRoute";
 import ProductList from "./components/ProductList";
 //import SignUp from "./components/SignUp";
 //import ViewProduct from "./components/ViewProduct";
@@ -37,7 +37,7 @@ function App() {
         {/* <Route exact path="/singup">
           <SignUp />
         </Route> */}
-        {/* <PrivateRoute path="/addproducts">
+        <PrivateRoute path="/addproducts">
           <AddProduct />
         </PrivateRoute>
         <PrivateRoute path="/editproductform">
@@ -52,7 +52,7 @@ function App() {
         <PrivateRoute path="/productlist">
           <ProductList />
         </PrivateRoute>
-        <PrivateRoute path="/viewproduct">
+        {/* <PrivateRoute path="/viewproduct">
           <ViewProducts />
         </PrivateRoute> */}
 
