@@ -11,8 +11,6 @@ const ProtectedNavBar = () => {
             <header>
                 <nav>
                     <Link to="/addproduct">Add Product</Link>
-                    <Link to="/editproductform">Edit Product</Link>
-                    <Link to="/edituserform">Edit User</Link>
                     <Link to="/productlist">Product List</Link>
                 </nav>
             </header>
