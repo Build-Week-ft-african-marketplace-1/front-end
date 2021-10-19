@@ -4,6 +4,14 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
+const intialFormValues = {
+    name: "",
+    category: "",
+    price_usd: "",
+    description: "",
+    img: "",
+  };
+
 const AddProduct = (props) => {
     const { push } = useHistory();
 
@@ -13,7 +21,6 @@ const AddProduct = (props) => {
         item_description: '',
         item_price: '',
         item_country: '',
-        item_price: '',
         username: '',
     })
     const handleChange = e => {

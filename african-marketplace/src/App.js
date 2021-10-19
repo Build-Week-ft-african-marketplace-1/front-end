@@ -9,7 +9,7 @@ import EditProductForm from "./components/EditProductForm";
 import EditUserForm from "./components/EditUserForm";
 import HomePage from "./components/HomePage";
 import Login from "./components/Login/Login";
-//import Logout from "./components/Logout";
+import Logout from "./components/Logout";
 import NavBar from "./components/NavBar";
 import ProtectedNavBar from "./components/ProtectedNavBar";
 import PrivateRoute from "./components/PrivateRoute";
@@ -34,9 +34,9 @@ function App() {
         <Route exact path="/login">
           <Login />
         </Route>
-        {/* <Route exact path="/logout">
+        <Route exact path="/logout">
           <Logout />
-        </Route> */}
+        </Route>
         {<Route exact path="/signup">
           <SignUp />
         </Route>}
