@@ -11,10 +11,11 @@ import HomePage from "./components/HomePage";
 import Login from "./components/Login/Login";
 //import Logout from "./components/Logout";
 import NavBar from "./components/NavBar";
+import ProtectedNavBar from "./components/ProtectedNavBar";
 import PrivateRoute from "./components/PrivateRoute";
 import ProductList from "./components/ProductList";
 import SignUp from "./components/SignUp";
-//import ViewProduct from "./components/ViewProduct";
+import ViewProduct from "./components/ViewProduct";
 
 
 import './App.css';
@@ -23,6 +24,8 @@ function App() {
   return (
     <div className="App">
       <NavBar />
+      {/* will make this private later */}
+      <ProtectedNavBar />
 
       <Switch>
         <Route exact path="/">
@@ -37,24 +40,26 @@ function App() {
         {<Route exact path="/signup">
           <SignUp />
         </Route>}
-        <PrivateRoute path="/addproducts">
+        {/* make private */}
+        <Route path="/addproduct">
           <AddProduct />
-        </PrivateRoute>
-        <PrivateRoute path="/editproductform">
+        </Route>
+        {/* make private */}
+        <Route path="/editproductform">
           <EditProductForm />
-        </PrivateRoute>
-        <PrivateRoute path="/edituserform">
+        </Route>
+        {/* make private */}
+        <Route path="/edituserform">
           <EditUserForm />
-        </PrivateRoute>
-        <PrivateRoute path="/addproducts">
-          <AddProduct />
-        </PrivateRoute>
-        <PrivateRoute path="/productlist">
+        </Route>
+        {/* make private */}
+        <Route path="/productlist">
           <ProductList />
-        </PrivateRoute>
-        {/* <PrivateRoute path="/viewproduct">
-          <ViewProducts />
-        </PrivateRoute> */}
+        </Route>
+        {/* make private */}
+        <Route path="/viewproduct">
+          <ViewProduct />
+        </Route>
 
       </Switch>
 
