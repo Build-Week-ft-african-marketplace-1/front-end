@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import * as yup from "yup";
-import loginSchema from "../validation/loginSchema";
+import loginSchema from "../../validation/loginSchema";
 import { useHistory } from "react-router-dom";
 import axios from "axios"; //need this??
 
-import '../components/login.css';
+import '../Login/login.css';
 
 
 //INITIAL VALUES

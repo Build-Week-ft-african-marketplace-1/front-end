@@ -8,7 +8,7 @@ import AddProduct from "./components/AddProduct";
 import EditProductForm from "./components/EditProductForm";
 import EditUserForm from "./components/EditUserForm";
 import HomePage from "./components/HomePage";
-import Login from "./components/Login";
+import Login from "./components/Login/Login";
 //import Logout from "./components/Logout";
 import NavBar from "./components/NavBar";
 import PrivateRoute from "./components/PrivateRoute";
