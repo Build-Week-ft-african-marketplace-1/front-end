@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import { useHistory } from "react-router-dom";
 
+import styled from "styled-components";
+
+import { StyledForm, StyledButton } from "./styles/OurStyles";
+
+const StyledFormSignup = styled.div`
+
+
+`
 
 const initialFormVals = {
    name:'',
@@ -15,6 +24,8 @@ export default function SignUp(props){
    const [ user, setUser ] = useState([]);
    const [ formVals, setFormVals ] = useState(initialFormVals);
    
+   const history = useHistory();
+
    //submit new user
    const onSubmit = (evt) =>{
       evt.preventDefault()
@@ -40,7 +51,7 @@ export default function SignUp(props){
                setUser([res.data, ...user]) // will we actually need to spread this here?
             })
             .catch( err => console.error(err))
-            .finally(() => console.log('cleaning'))
+            .finally(() => history.push('/login'))
       }
    //    postNewUser(user)
 
@@ -58,43 +69,52 @@ export default function SignUp(props){
    }
 
    return (
-      <div>
-
-      <form id="signUp" onSubmit={onSubmit}>
-         <label> Full Name (first last):
+      <StyledForm>
+      
+      <form id="signUp" className='container' onSubmit={onSubmit}>
+        <div>
+         <label> Full Name (first last): </label>
             <input
                type='text'
                name='name'
                value={formVals.name}
                onChange={onChange}
-               
                />
-         </label>
-         <label> Email:
+        </div>
+      <div >
+         <label> Email: </label>
             <input
                type='email'
                name='email'
                value={formVals.email}
                onChange={onChange}
                />
-         </label>
-         <label> Username:
+      </div>
+      <div >
+
+         <label> Username:</label>
             <input
                type='text'
                name='username'
                value={formVals.username}
                onChange={onChange}
                />
-         </label>
-         <label> Password:
+      </div>
+      <div >
+
+         <label> Password: </label>
             <input
                type='password'
                name='password'
                value={formVals.password}
                onChange={onChange}
+               placeholder= 'hello im david'
                />
-         </label>
-         <label> Terms of service
+      </div>
+      <div>
+
+         <label> Terms of service 
+
             <input
                type='checkbox'
                name='terms'
@@ -102,9 +122,14 @@ export default function SignUp(props){
                onChange={onChange}
                />   
          </label>
-         <input type='submit' /* onClick={(() => <Route path='/welcome'/>)} *//>
+      </div>
+      {/* <StyledButton> */}
+         <div className='row' >
+               <button id='submitBtn' type='submit'> Sign Up </button> 
+         </div>
+      {/* </StyledButton> */}
       </form>
      
-   </div>
+   </StyledForm>
    );
 }
