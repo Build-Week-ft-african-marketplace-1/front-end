@@ -6,7 +6,7 @@ import { useHistory } from 'react-router';
 
 import AddProduct from "./components/AddProduct";
 import EditProductForm from "./components/EditProductForm";
-import EditUserForm from "./components/EditUserForm";
+// import EditUserForm from "./components/EditUserForm";
 import HomePage from "./components/HomePage";
 import Login from "./components/Login/Login";
 import Logout from "./components/Logout";
@@ -49,9 +49,9 @@ function App() {
           <EditProductForm />
         </Route>
         {/* make private */}
-        <Route path="/edituserform">
+        {/* <Route path="/edituserform">
           <EditUserForm />
-        </Route>
+        </Route> */}
         {/* make private */}
         <Route path="/productlist">
           <ProductList />
