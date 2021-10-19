@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import * as yup from "yup";
-import axios from "axios";
+import { useHistory } from "react-router-dom";
+import axios from "axios"; //need this??
 
 
+//INITIAL VALUES
 const initialUserValues = {
   username: "",
   password: "",
 };
-
 const initialFormErrors = {
   username: "",
   password: "",
@@ -18,7 +19,15 @@ export default function Login() {
   const [userValues, setUserValues] = useState(initialUserValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
 
-  //EVENT HANDLERS
+  // CREATE A FORM INPUT
+  const FormInput = props => (
+    <div class="row">
+      <label>{props.description}</label>
+      <input name={props.name} type={props.type} placeholder={props.placeholder} value={props.value} onChange={onChange} />
+    </div>  
+  );
+
+  // EVENT HANDLERS
   const onChange = (evt) => {
     const { name, value } = evt.target;
     validate(name, value);
@@ -40,20 +49,22 @@ export default function Login() {
 
   const onSubmit = (evt) => {
     evt.preventDefault();
-    //   submit();
+    //   submit() authentication
+    // history.push("/marketplace");
   };
+
+  const history = useHistory();
 
   return (
     <form className="login-container" onSubmit={onSubmit}>
       {/* ^^^^^^ come back to the onSubmit function ^^^^^^^^ */}
 
-      <header id="loginHeader">
-        <h2>Sign In</h2>
-      </header>
+      <header className="loginHeader">Sign In</header>
+
       <div id="loginForm" className="form">
-        <div className="row">
+        {/* <div className="row">
           <label>
-            Username{" "}
+            Username
             <input
               name="username"
               placeholder="Enter your username"
@@ -61,12 +72,13 @@ export default function Login() {
               value={userValues.username}
               onChange={onChange}
             />
-          </label>
+          </label> </div>*/}
+          <FormInput description="Username" name="username" type="text" placeholder="Enter your username" value={userValues.username} />
           <div className="error">{formErrors.username}</div>
-        </div>
-        <div className="row">
+
+        {/* <div className="row">
           <label>
-            Password{" "}
+            Password
             <input
               name="password"
               placeholder="Enter your password"
@@ -74,9 +86,10 @@ export default function Login() {
               value={userValues.password}
               onChange={onChange}
             />
-          </label>
+          </label> </div>*/}
+          <FormInput description="Password" name="password" type="password" placeholder="Enter your password" value={userValues.password} />
           <div className="error">{formErrors.password}</div>
-        </div>
+        
         <div className="row">
           <button id="loginBtn" type="submit">
             Sign In
