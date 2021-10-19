@@ -5,6 +5,12 @@ const BannerImage = styled.img`
     max-width: 100%;
     border-radius: 3%;
 `
+const QuestionText = styled.div`
+    background-color: white;
+    padding: 2em;
+    margin: 5em;
+    opacity: 70%;
+`
 
 export default function HomePage() {
     return (
@@ -15,6 +21,7 @@ export default function HomePage() {
 <div className='image'>
     <BannerImage src = 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600' alt='grocery-store' />
 </div>
+<QuestionText>
 <div className='questions'>
     <h2> Questions: </h2>
     <h3> What is African Marketplace?</h3>
@@ -22,6 +29,7 @@ export default function HomePage() {
     <h3> Who is African Marketplace for?</h3>
     <p> This marketplace is for any gender, race, ethnicity, etc. We are inclusive to anyone! </p>
 </div>
+</QuestionText>
 </>
     )
 }
