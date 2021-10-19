@@ -25,21 +25,21 @@ function App() {
     <div className="App">
       <NavBar />
       {/* will make this private later */}
-      <ProtectedNavBar />
+      {/* <ProtectedNavBar /> */}
 
       <Switch>
         <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route exact path="/login">
           <Login />
+        </Route>
+        <Route exact path="/signup">
+          <SignUp />
+        </Route>
+        <Route exact path="/homepage">
+          <HomePage />
         </Route>
         <Route exact path="/logout">
           <Logout />
         </Route>
-        {<Route exact path="/signup">
-          <SignUp />
-        </Route>}
         {/* make private */}
         <Route path="/addproduct">
           <AddProduct />

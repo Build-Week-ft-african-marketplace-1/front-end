@@ -1,21 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+// import React from "react";
+// import { Link } from "react-router-dom";
+// import { connect } from "react-redux";
 
-const ProtectedNavBar = () => {
+// const ProtectedNavBar = () => {
 
 
 
-    return (
-        <div className="nav-header">
-            <header>
-                <nav>
-                    <Link to="/addproduct">Add Product</Link>
-                    <Link to="/productlist">Product List</Link>
-                </nav>
-            </header>
-        </div>
-        );
-    };
+//     return (
+//         <div className="nav-header">
+//             <header>
+//                 <nav>
+//                     <Link to="/addproduct">Add Product</Link>
+//                     <Link to="/productlist">Product List</Link>
+//                 </nav>
+//             </header>
+//         </div>
+//         );
+//     };
     
-    export default ProtectedNavBar;
+//     export default ProtectedNavBar;
