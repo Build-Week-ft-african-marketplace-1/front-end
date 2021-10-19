@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import * as yup from "yup";
 import loginSchema from "../../validation/loginSchema";
-import { useHistory } from "react-router-dom";
-import axios from "axios"; //need this??
+import { useHistory, Link } from "react-router-dom";
 
 import '../Login/login.css';
 
@@ -58,7 +57,7 @@ export default function Login() {
     <form className="login-container" onSubmit={onSubmit}>
       {/* ^^^^^^ come back to the onSubmit function ^^^^^^^^ */}
 
-      <header className="loginHeader">Sign In</header>
+      <header className="loginHeader">Log In</header>
 
       <div id="loginForm" className="form">
         <div className="row">
@@ -91,8 +90,9 @@ export default function Login() {
         
         <div className="row">
           <button id="loginBtn" type="submit">
-            Sign In
+            Log In
           </button>
+          <div className="row-end">New seller? <Link to="/signup">Create a new account.</Link></div>
         </div>
       </div>
     </form>

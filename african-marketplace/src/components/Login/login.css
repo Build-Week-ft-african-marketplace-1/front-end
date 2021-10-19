@@ -1,5 +1,9 @@
-
 /* Login - START */
+body {
+  background-image: url(../../assets/pattern-1-teal.png);
+  background-repeat: repeat;
+}
+
 .login-container {
    max-width: 500px;
    min-width: 300px;
@@ -77,6 +81,10 @@
  }
  
  #loginBtn {
+   margin-bottom: 2rem;
+ }
+
+ .row-end {
    margin-bottom: 2rem;
  }
  
