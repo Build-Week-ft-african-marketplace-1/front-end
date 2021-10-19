@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import * as yup from "yup";
+import loginSchema from "../validation/loginSchema";
 import { useHistory } from "react-router-dom";
 import axios from "axios"; //need this??
 
@@ -36,16 +37,11 @@ export default function Login() {
 
   const validate = (name, value) => {
     yup
-      .reach(validationSchema, name)
+      .reach(loginSchema, name)
       .validate(value)
       .then(() => setFormErrors({ ...formErrors, [name]: "" }))
       .catch((err) => setFormErrors({ ...formErrors, [name]: err.errors[0] }));
   };
-
-  const validationSchema = yup.object().shape({
-    username: yup.required("Username is required"),
-    password: yup.required("Password is required"),
-  });
 
   const onSubmit = (evt) => {
     evt.preventDefault();
