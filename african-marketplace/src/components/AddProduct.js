@@ -4,7 +4,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-const intialFormValues = {
+const initialFormValues = {
     name: "",
     category: "",
     price_usd: "",
@@ -96,8 +96,8 @@ const AddProduct = (props) => {
                     value={item.item_country}
                     onChange={handleChange}
                     name="item_country"
-                    type="tex"
-                    placeholder="Your Region">
+                    type="text"
+                    placeholder="What is your Region?">
                     <option value="">Select Seller's Region</option>
                     <option value="1">South Africa</option>
                     <option value="2">Middle Africa</option>
@@ -106,7 +106,7 @@ const AddProduct = (props) => {
                     <option value="5">North Africa</option>
                     </select>
                 </div>
-                <button>Add your item</button>
+                <button>Please dd your item</button>
             </form>
         </div>
     );
