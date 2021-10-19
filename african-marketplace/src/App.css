@@ -76,7 +76,7 @@
 }
 
 .row input:focus {
-  box-shadow: inset 0px -3px 0px 0px rgba(34, 193, 195, 0.7);
+  box-shadow: inset 0px -3px 0px 0px #025467;
   outline: none;
 }
 
@@ -104,7 +104,7 @@
   font-size: 1.3rem;
   color: white;
   font-weight: 700;
-  background: rgb(34, 193, 195);
+  background: #025467;
   border: 0px;
   cursor: pointer;
   transition: opacity 0.25s ease-out;
