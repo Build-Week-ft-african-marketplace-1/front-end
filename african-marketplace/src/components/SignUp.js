@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import { Route, Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import styled from "styled-components";
 
@@ -51,7 +51,7 @@ export default function SignUp(props){
                setUser([res.data, ...user]) // will we actually need to spread this here?
             })
             .catch( err => console.error(err))
-            .finally(() => console.log('cleaning'))
+            .finally(() => history.push('/login'))
       }
    //    postNewUser(user)
 
@@ -125,7 +125,7 @@ export default function SignUp(props){
       </div>
       {/* <StyledButton> */}
          <div className='row' >
-               <button id='submitBtn' type='submit' onClick={(() => history.push('/login'))}> Sign Up </button> 
+               <button id='submitBtn' type='submit'> Sign Up </button> 
          </div>
       {/* </StyledButton> */}
       </form>
