@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import * as yup from "yup";
+import loginSchema from "../validation/loginSchema";
 import { useHistory } from "react-router-dom";
 import axios from "axios"; //need this??
 
@@ -19,14 +20,6 @@ export default function Login() {
   const [userValues, setUserValues] = useState(initialUserValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
 
-  // CREATE A FORM INPUT
-  const FormInput = props => (
-    <div class="row">
-      <label>{props.description}</label>
-      <input name={props.name} type={props.type} placeholder={props.placeholder} value={props.value} onChange={onChange} />
-    </div>  
-  );
-
   // EVENT HANDLERS
   const onChange = (evt) => {
     const { name, value } = evt.target;
@@ -36,16 +29,11 @@ export default function Login() {
 
   const validate = (name, value) => {
     yup
-      .reach(validationSchema, name)
+      .reach(loginSchema, name)
       .validate(value)
       .then(() => setFormErrors({ ...formErrors, [name]: "" }))
       .catch((err) => setFormErrors({ ...formErrors, [name]: err.errors[0] }));
   };
-
-  const validationSchema = yup.object().shape({
-    username: yup.required("Username is required"),
-    password: yup.required("Password is required"),
-  });
 
   const onSubmit = (evt) => {
     evt.preventDefault();
@@ -55,6 +43,15 @@ export default function Login() {
 
   const history = useHistory();
 
+
+  // CREATE A FORM INPUT ** not used, onchange is not working
+  // const FormInput = props => (
+  //   <div class="row">
+  //     <label>{props.description}</label>
+  //     <input name={props.name} type={props.type} placeholder={props.placeholder} value={props.value} onChange={props.onChange} />
+  //   </div>  
+  // );
+
   return (
     <form className="login-container" onSubmit={onSubmit}>
       {/* ^^^^^^ come back to the onSubmit function ^^^^^^^^ */}
@@ -62,9 +59,9 @@ export default function Login() {
       <header className="loginHeader">Sign In</header>
 
       <div id="loginForm" className="form">
-        {/* <div className="row">
+        <div className="row">
           <label>
-            Username
+            Username</label>
             <input
               name="username"
               placeholder="Enter your username"
@@ -72,13 +69,13 @@ export default function Login() {
               value={userValues.username}
               onChange={onChange}
             />
-          </label> </div>*/}
-          <FormInput description="Username" name="username" type="text" placeholder="Enter your username" value={userValues.username} />
+           </div>
+          {/* <FormInput description="Username" name="username" type="text" placeholder="Enter your username" value={userValues.username} /> */}
           <div className="error">{formErrors.username}</div>
 
-        {/* <div className="row">
+        <div className="row">
           <label>
-            Password
+            Password</label>
             <input
               name="password"
               placeholder="Enter your password"
@@ -86,8 +83,8 @@ export default function Login() {
               value={userValues.password}
               onChange={onChange}
             />
-          </label> </div>*/}
-          <FormInput description="Password" name="password" type="password" placeholder="Enter your password" value={userValues.password} />
+           </div>
+          {/* <FormInput description="Password" name="password" type="password" placeholder="Enter your password" value={userValues.password} onChange={onChange} /> */}
           <div className="error">{formErrors.password}</div>
         
         <div className="row">
