@@ -7,7 +7,21 @@ const initialFormVals = {
    password: "password"
 }
 
+
+
 export default function SignUp(props){
+
+   useEffect(() => {
+      const postNewUser = (newUser) =>{
+         axios.post('', newUser)
+            .then(res =>{
+               console.log(res)
+            })
+            .catch()
+
+      }
+
+   }, [])
 
    const onSubmit = (evt) =>{
       evt.preventDefault()
@@ -27,6 +41,7 @@ export default function SignUp(props){
                name='name'
                value={initialFormVals.name}
                onChange={onChange}
+
             />
          </label>
          <label> Email:
