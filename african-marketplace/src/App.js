@@ -13,7 +13,7 @@ import Login from "./components/Login";
 import NavBar from "./components/NavBar";
 import PrivateRoute from "./components/PrivateRoute";
 import ProductList from "./components/ProductList";
-//import SignUp from "./components/SignUp";
+import SignUp from "./components/SignUp";
 //import ViewProduct from "./components/ViewProduct";
 
 
@@ -34,9 +34,9 @@ function App() {
         {/* <Route exact path="/logout">
           <Logout />
         </Route> */}
-        {/* <Route exact path="/singup">
+        {<Route exact path="/signup">
           <SignUp />
-        </Route> */}
+        </Route>}
         <PrivateRoute path="/addproducts">
           <AddProduct />
         </PrivateRoute>

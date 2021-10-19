@@ -4,6 +4,8 @@ import loginSchema from "../validation/loginSchema";
 import { useHistory } from "react-router-dom";
 import axios from "axios"; //need this??
 
+import '../components/login.css';
+
 
 //INITIAL VALUES
 const initialUserValues = {
