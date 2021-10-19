@@ -8,12 +8,12 @@ import AddProduct from "./components/AddProduct";
 import EditProductForm from "./components/EditProductForm";
 import EditUserForm from "./components/EditUserForm";
 import HomePage from "./components/HomePage";
-import Login from "./components/Login";
+import Login from "./components/Login/Login";
 //import Logout from "./components/Logout";
 import NavBar from "./components/NavBar";
 import PrivateRoute from "./components/PrivateRoute";
 import ProductList from "./components/ProductList";
-//import SignUp from "./components/SignUp";
+import SignUp from "./components/SignUp";
 //import ViewProduct from "./components/ViewProduct";
 
 
@@ -34,9 +34,9 @@ function App() {
         {/* <Route exact path="/logout">
           <Logout />
         </Route> */}
-        {/* <Route exact path="/singup">
+        {<Route exact path="/signup">
           <SignUp />
-        </Route> */}
+        </Route>}
         <PrivateRoute path="/addproducts">
           <AddProduct />
         </PrivateRoute>
