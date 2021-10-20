@@ -27,7 +27,7 @@ const ProductList = () => {
     
     useEffect(() => {
      const getItems = () => {
-      axios.get(' https://bw-african-marketplace.herokuapp.com/api/items')
+      axios.get(`https://bw-african-marketplace.herokuapp.com/api/items/`)
          .then(resp => {
              setItems(resp.data)
              console.log(resp.data)
