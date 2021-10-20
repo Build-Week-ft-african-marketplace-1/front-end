@@ -54,9 +54,9 @@ const AddProduct = (props) => {
 
     return (
        <StyledForm>
-        <form onSubmit={handleSubmit}>
+        <form  onSubmit={handleSubmit}>
+            <header>Fill in this form to <br></br>add your item to the marketplace.</header>
             <section>
-                <header>Fill in this form to <br></br>add your item to the marketplace.</header>
                 <div>
                     <label> Item Name: </label>
                     <input
@@ -117,7 +117,7 @@ const AddProduct = (props) => {
                 </StyledButton>
             </section>
         </form>
-        </StyledForm>
+     </StyledForm>
     );
 };
 

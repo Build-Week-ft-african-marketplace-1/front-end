@@ -70,39 +70,39 @@ export default function SignUp(props){
 
    return (
       <StyledForm>
-      <form id="signUp" onSubmit={onSubmit}>
-         <header> Sign Up </header>
+     <form id="signUp" onSubmit={onSubmit}>
+        <header> Sign Up </header>
       
       <section>
-        <div>
-         <label> Full Name (first last): </label>
+         <div>
+            <label> Full Name (first last): </label>
             <input
                type='text'
                name='name'
                value={formVals.name}
                onChange={onChange}
                />
-        </div>
-      <div >
-         <label> Email: </label>
+         </div>
+         <div >
+            <label> Email: </label>
             <input
                type='email'
                name='email'
                value={formVals.email}
                onChange={onChange}
                />
-      </div>
-      <div>
-         <label> Username:</label>
+         </div>
+         <div>
+            <label> Username:</label>
             <input
                type='text'
                name='username'
                value={formVals.username}
                onChange={onChange}
                />
-      </div>
-      <div >
-         <label> Password: </label>
+         </div>
+         <div >
+            <label> Password: </label>
             <input
                type='password'
                name='password'

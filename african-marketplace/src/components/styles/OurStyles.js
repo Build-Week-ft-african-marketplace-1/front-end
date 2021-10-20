@@ -59,34 +59,40 @@ form {
    padding-bottom: 0.5rem;
    color: rgba(187, 187, 187, 0.9);
  }
+
+//  select {
+//    background-color: ${pr => pr.theme.greenBlue};
+//    padding: 15px;
+//  }
  
+`
+
+
+const StyledButton = styled.div`
+
+button {
+  border-radius: 25px;
+  width: 80%;
+  height: 40px;
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 700;
+  background: ${pr => pr.theme.greenBlue};
+  border: 0px;
+  cursor: pointer;
+  transition: opacity 0.25s ease-out;
+  margin-bottom: 2rem;
+}
+
+button:hover {
+  opacity: 0.6;
+}
+
 `
 
 const StyledHome = styled.div`
 
 `
 
-const StyledButton = styled.div`
-
- button {
-   border-radius: 25px;
-   width: 80%;
-   height: 40px;
-   font-size: 1.3rem;
-   color: white;
-   font-weight: 700;
-   background: ${pr => pr.theme.greenBlue};
-   border: 0px;
-   cursor: pointer;
-   transition: opacity 0.25s ease-out;
-   margin-bottom: 2rem;
- }
- 
- button:hover {
-   opacity: 0.6;
- }
-
-
-`
 
 export { StyledForm, StyledHome, StyledButton }
