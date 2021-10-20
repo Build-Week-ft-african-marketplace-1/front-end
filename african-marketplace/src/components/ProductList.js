@@ -28,15 +28,14 @@ const ProductList = () => {
      
  
       const handleClick = (e, item) => {
-          e.preventDefault()
-          push(``)
+          e.preventDefault();
       }
     return (
-        <div>
-        <header>
-             <h1>Here are items that can be found in the Market</h1>
-             <p> Click here if you have items for sale</p>
-             <Link to ="/"><button>Add your item</button></Link>
+        <div className="product-container">
+        <header >
+             <h1 className='loginHeader'>Here are items that can be found in the Market</h1>
+             <p className='productlabel'> Click here if you have items for sale</p>
+             <Link to ="/addproduct"><button id='loginBtn'>Add your item</button></Link>
          </header>
 
          {/* <div>
