@@ -17,7 +17,7 @@ const StyledTerms = styled.div`
    input{
       box-shadow: none;
       &:focus{
-         box-shadow: none;
+         box-shadow: 0;
       }
    }
 

@@ -3,7 +3,6 @@ import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { StyledForm, StyledButton } from "./styles/OurStyles";
 
 const initialFormValues = {
     name: "",
@@ -53,12 +52,11 @@ const AddProduct = (props) => {
 
 
     return (
-       <StyledForm>
-        <form onSubmit={handleSubmit}>
-            <section>
-                <header>Fill in this form to <br></br>add your item to the marketplace.</header>
-                <div>
-                    <label> Item Name: </label>
+            <div className="product-container">
+            <form onSubmit={handleSubmit}>
+                <header className="loginHeader">Add a product to the marketplace</header>
+                <div className="row">
+                    <label className="productlabel">Item Name</label>
                     <input
                     value={item.item_name}
                     onChange={handleChange}
@@ -67,8 +65,8 @@ const AddProduct = (props) => {
                     placeholder="Please enter you item name."
                     />
                 </div>
-                <div>
-                    <label> Description: </label>
+                <div className="row">
+                <label className="productlabel">Item Description</label>
                     <input
                     value={item.item_description}
                     onChange={handleChange}
@@ -77,8 +75,8 @@ const AddProduct = (props) => {
                     placeholder="Please describe your item you wish to sell."
                     />
                 </div>
-                <div>
-                    <label> Price: </label>
+                <div className="row">
+                <label className="productlabel">Price</label>
                     <input
                     value={item.item_price}
                     onChange={handleChange}
@@ -87,8 +85,8 @@ const AddProduct = (props) => {
                     placeholder="Please enter your price."
                     />
                 </div>
-                <div>
-                    <label>Username:</label>
+                <div className="row">
+                <label className="productlabel">Seller's Name</label>
                     <input
                     value={item.username}
                     onChange={handleChange}
@@ -97,7 +95,8 @@ const AddProduct = (props) => {
                     placeholder="Please enter your name."
                     />
                 </div>
-                <div>
+                <div className="row">
+                <label className="productlabel">Region</label>
                     <select
                     value={item.item_country}
                     onChange={handleChange}
@@ -112,12 +111,10 @@ const AddProduct = (props) => {
                     <option value="5">North Africa</option>
                     </select>
                 </div>
-                <StyledButton>
-                    <button>Please dd your item</button>
-                </StyledButton>
-            </section>
-        </form>
-        </StyledForm>
+                <div className="row">
+                <button id="loginBtn">Add your item</button></div>
+            </form>
+        </div>
     );
 };
 

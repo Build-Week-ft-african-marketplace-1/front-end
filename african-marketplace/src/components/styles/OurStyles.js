@@ -5,7 +5,7 @@ form {
    max-width: 500px;
    min-width: 300px;
    max-height: 700px;
-   width: 30%;
+   width: 60%;
    height: 60%;
    margin: 100px auto;
    background-color: #ffff;
