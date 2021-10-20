@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { StyledForm, StyledButton } from "./styles/OurStyles";
 
 const initialFormValues = {
     name: "",
@@ -52,10 +53,12 @@ const AddProduct = (props) => {
 
 
     return (
-            <div>
-            <form onSubmit={handleSubmit}>
-                <h3>Fill in this form to <br></br>add your item to the marketplace.</h3>
+       <StyledForm>
+        <form onSubmit={handleSubmit}>
+            <section>
+                <header>Fill in this form to <br></br>add your item to the marketplace.</header>
                 <div>
+                    <label> Item Name: </label>
                     <input
                     value={item.item_name}
                     onChange={handleChange}
@@ -65,6 +68,7 @@ const AddProduct = (props) => {
                     />
                 </div>
                 <div>
+                    <label> Description: </label>
                     <input
                     value={item.item_description}
                     onChange={handleChange}
@@ -74,6 +78,7 @@ const AddProduct = (props) => {
                     />
                 </div>
                 <div>
+                    <label> Price: </label>
                     <input
                     value={item.item_price}
                     onChange={handleChange}
@@ -83,6 +88,7 @@ const AddProduct = (props) => {
                     />
                 </div>
                 <div>
+                    <label>Username:</label>
                     <input
                     value={item.username}
                     onChange={handleChange}
@@ -106,9 +112,12 @@ const AddProduct = (props) => {
                     <option value="5">North Africa</option>
                     </select>
                 </div>
-                <button>Please dd your item</button>
-            </form>
-        </div>
+                <StyledButton>
+                    <button>Please dd your item</button>
+                </StyledButton>
+            </section>
+        </form>
+        </StyledForm>
     );
 };
 

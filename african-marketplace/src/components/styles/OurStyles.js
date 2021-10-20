@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledForm = styled.div`
-.container {
+form {
    max-width: 500px;
    min-width: 300px;
    max-height: 700px;
@@ -12,7 +12,7 @@ const StyledForm = styled.div`
    border-radius: 25px;
  }
  
- .loginHeader {
+ header {
    text-align: center;
    padding: 2rem 0;
    margin: 0;
@@ -49,7 +49,7 @@ const StyledForm = styled.div`
  }
  
  input:hover::-webkit-input-placeholder,
-  input:focus::-webkit-input-placeholder {
+ input:focus::-webkit-input-placeholder {
    opacity: 0;
  }
  
@@ -67,6 +67,7 @@ const StyledHome = styled.div`
 `
 
 const StyledButton = styled.div`
+
  button {
    border-radius: 25px;
    width: 80%;
@@ -78,14 +79,11 @@ const StyledButton = styled.div`
    border: 0px;
    cursor: pointer;
    transition: opacity 0.25s ease-out;
+   margin-bottom: 2rem;
  }
  
  button:hover {
    opacity: 0.6;
- }
-
- #submitBtn {
-   margin-bottom: 2rem;
  }
 
 
