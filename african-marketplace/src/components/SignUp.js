@@ -2,26 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 
-import styled from "styled-components";
+import * as yup from 'yup';
+import schema from '../validation/signupSchema';
 
-import { StyledForm, StyledButton } from "./styles/OurStyles";
+import { StyledForm, StyledButton, StyledCheckbox } from "./styles/OurStyles";
 
-const StyledTerms = styled.div`
-   div {
-      justify-self: center;
-      border-bottom: none;
-   }
-   label {
-      padding-left: 0;
-   }
-   input{
-      box-shadow: none;
-      &:focus{
-         box-shadow: 0;
-      }
-   }
-
-`
 
 const initialFormVals = {
    name:'',
@@ -31,10 +16,21 @@ const initialFormVals = {
    terms: false,
 }
 
+const initialFormErrors = {
+   name:'',
+   email: '',
+   username: '',
+   password: '',
+   terms: false,
+}
+
+const initialDisabled = true;
 
 export default function SignUp(props){
    const [ user, setUser ] = useState([]);
    const [ formVals, setFormVals ] = useState(initialFormVals);
+   const [ disabled, setDisabled ] = useState(initialDisabled)
+   const [ formErrors, setFormErrors ] = useState(initialFormErrors)
    
    const history = useHistory();
 
@@ -53,9 +49,9 @@ export default function SignUp(props){
          terms: !!formVals.terms
       }
       postNewUser(newUser)
-      // console.log(newUser) //! proof of working
    }
 
+   //? post new User to base
    // useEffect(() => {
       const postNewUser = (newUser) =>{
          axios.post('https://reqres.in/api/users', newUser)
@@ -76,10 +72,30 @@ export default function SignUp(props){
       update( name, valToUse );
    }
    const update = ( name, value ) =>{
-      //! validate( name, value );
-      setFormVals({...formVals, [name]: value})
+      validate( name, value ); //validation on the update
+      setFormVals({ ...formVals, [name]: value})
    }
 
+   //! Validate
+   const validate = (name, value) =>{
+      yup.reach(schema, name)
+         .validate(value)
+         .then(() =>{
+            setFormErrors({ ...formErrors, [name]: ''})
+         })
+         .catch(err => setFormErrors({ ...formErrors, [name]: err.errors[0]})
+         )
+   }
+   //! disable
+   useEffect(() =>{
+      schema.isValid(formVals)
+         .then(valid =>{
+            setDisabled(!valid)
+         })
+   }, [formVals])
+
+
+//Return STATMENT
    return (
       <StyledForm>
       <form id="signUp" onSubmit={onSubmit}>
@@ -96,6 +112,7 @@ export default function SignUp(props){
                placeholder= 'First Last'
                />
         </div>
+        {disabled ? <span className='error'>{formErrors.name}</span> : null }
       <div >
          <label> Email: </label>
             <input
@@ -105,6 +122,7 @@ export default function SignUp(props){
                onChange={onChange}
                placeholder='example@example.com'
                />
+        {disabled ? <span className='error'>{formErrors.email}</span> : null }
       </div>
       <div>
          <label> Username:</label>
@@ -113,8 +131,9 @@ export default function SignUp(props){
                name='username'
                value={formVals.username}
                onChange={onChange}
-               placeholder='Please enter username'
+               placeholder='Please Enter Username'
                />
+         {disabled ? <span className='error'>{formErrors.username}</span> : null }
       </div>
       <div >
          <label> Password: </label>
@@ -123,22 +142,24 @@ export default function SignUp(props){
                name='password'
                value={formVals.password}
                onChange={onChange}
-               placeholder= ''
+               placeholder= 'Please Enter Password'
                />
-         </div>
-         <div>
-            <StyledTerms>
-               <label> Terms of Service </label>
-               <input
-                  type='checkbox'
-                  name='terms'
-                  checked={formVals.terms}
-                  onChange={onChange}
-                  />  
-            </StyledTerms> 
-         </div>
+         {disabled ? <span className='error'>{formErrors.password}</span> : null }
+      </div>
+      <div>
+         <StyledCheckbox>
+            <label> Terms of Service </label>
+            <input
+               type='checkbox'
+               name='terms'
+               checked={formVals.terms}
+               onChange={onChange}
+               />  
+         </StyledCheckbox> 
+         {disabled ? <span className='error'>{formErrors.terms}</span> : null }
+      </div>
          <StyledButton>
-            <button id='submitBtn' type='submit'> Sign Up </button> 
+            <button disabled={disabled} id='submitBtn' type='submit'> Sign Up </button> 
          </StyledButton>
       </section>
       </form>
