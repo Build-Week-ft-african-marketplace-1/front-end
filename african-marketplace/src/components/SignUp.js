@@ -14,10 +14,11 @@ const StyledTerms = styled.div`
    label {
       padding-left: 0;
    }
-   input{
+   input {
       box-shadow: none;
       &:focus{
-         box-shadow: 0;
+         //! fixed the shadow on the Terms Checkbox
+         box-shadow: none;
       }
    }
 
