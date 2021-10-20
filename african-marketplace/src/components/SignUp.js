@@ -6,8 +6,20 @@ import styled from "styled-components";
 
 import { StyledForm, StyledButton } from "./styles/OurStyles";
 
-const StyledFormSignup = styled.div`
-
+const StyledTerms = styled.div`
+   div {
+      justify-self: center;
+      border-bottom: none;
+   }
+   label {
+      padding-left: 0;
+   }
+   input{
+      box-shadow: none;
+      &:focus{
+         box-shadow: none;
+      }
+   }
 
 `
 
@@ -75,12 +87,13 @@ export default function SignUp(props){
       
       <section>
         <div>
-         <label> Full Name (first last): </label>
+         <label> Full Name: </label>
             <input
                type='text'
                name='name'
                value={formVals.name}
                onChange={onChange}
+               placeholder= 'First Last'
                />
         </div>
       <div >
@@ -90,6 +103,7 @@ export default function SignUp(props){
                name='email'
                value={formVals.email}
                onChange={onChange}
+               placeholder='example@example.com'
                />
       </div>
       <div>
@@ -99,6 +113,7 @@ export default function SignUp(props){
                name='username'
                value={formVals.username}
                onChange={onChange}
+               placeholder='Please enter username'
                />
       </div>
       <div >
@@ -108,17 +123,19 @@ export default function SignUp(props){
                name='password'
                value={formVals.password}
                onChange={onChange}
-               placeholder= 'hello im david'
+               placeholder= ''
                />
          </div>
          <div>
-            <label> Terms of service </label>
-            <input
-               type='checkbox'
-               name='terms'
-               checked={formVals.terms}
-               onChange={onChange}
-               />   
+            <StyledTerms>
+               <label> Terms of Service </label>
+               <input
+                  type='checkbox'
+                  name='terms'
+                  checked={formVals.terms}
+                  onChange={onChange}
+                  />  
+            </StyledTerms> 
          </div>
          <StyledButton>
             <button id='submitBtn' type='submit'> Sign Up </button> 
