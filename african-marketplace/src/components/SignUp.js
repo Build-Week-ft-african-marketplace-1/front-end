@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 
+import * as yup from 'yup';
+import schema from '../validation/signupSchema';
+
 import styled from "styled-components";
 
 import { StyledForm, StyledButton } from "./styles/OurStyles";
@@ -24,6 +27,8 @@ const StyledTerms = styled.div`
 
 `
 
+
+
 const initialFormVals = {
    name:'',
    email: "",
@@ -32,10 +37,22 @@ const initialFormVals = {
    terms: false,
 }
 
+const initialDisabled = true;
+
+const initialFormErrors = {
+   name:'',
+   email: '',
+   username: '',
+   password: '',
+   terms: '',
+}
+
 
 export default function SignUp(props){
    const [ user, setUser ] = useState([]);
    const [ formVals, setFormVals ] = useState(initialFormVals);
+   const [ disabled, setDisabled ] = useState(initialDisabled)
+   const [ formErrors, setFormErrors ] = useState(initialFormErrors)
    
    const history = useHistory();
 
@@ -57,6 +74,7 @@ export default function SignUp(props){
       // console.log(newUser) //! proof of working
    }
 
+   //? post new User to base
    // useEffect(() => {
       const postNewUser = (newUser) =>{
          axios.post('https://reqres.in/api/users', newUser)
@@ -77,7 +95,7 @@ export default function SignUp(props){
       update( name, valToUse );
    }
    const update = ( name, value ) =>{
-      //! validate( name, value );
+      validate( name, value ); //validation on the update
       setFormVals({...formVals, [name]: value})
    }
 
