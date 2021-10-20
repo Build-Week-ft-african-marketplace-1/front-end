@@ -54,9 +54,6 @@ export default function SignUp(props){
    const [ formErrors, setFormErrors ] = useState(initialFormErrors)
    
    const history = useHistory();
-   
-   
-   
 
    //submit new user
    const onSubmit = (evt) =>{
@@ -73,7 +70,6 @@ export default function SignUp(props){
          terms: !!formVals.terms
       }
       postNewUser(newUser)
-      // console.log(newUser) //! proof of working
    }
 
    //? post new User to base

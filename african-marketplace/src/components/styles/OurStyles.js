@@ -4,7 +4,7 @@ const StyledForm = styled.div`
 form {
    max-width: 500px;
    min-width: 300px;
-   max-height: 700px;
+   max-height: 800px;
    width: 60%;
    height: 60%;
    margin: 100px auto;
