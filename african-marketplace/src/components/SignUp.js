@@ -5,26 +5,8 @@ import { useHistory } from "react-router-dom";
 import * as yup from 'yup';
 import schema from '../validation/signupSchema';
 
-import styled from "styled-components";
+import { StyledForm, StyledButton, StyledCheckbox } from "./styles/OurStyles";
 
-import { StyledForm, StyledButton } from "./styles/OurStyles";
-
-const StyledTerms = styled.div`
-   div {
-      justify-self: center;
-      border-bottom: none;
-   }
-   label {
-      padding-left: 0;
-   }
-   input {
-      box-shadow: none;
-      &:focus{
-         //! fixed the shadow on the Terms Checkbox
-         box-shadow: none;
-      }
-   }
-`
 
 const initialFormVals = {
    name:'',
@@ -33,7 +15,6 @@ const initialFormVals = {
    password: "",
    terms: false,
 }
-
 
 const initialFormErrors = {
    name:'',
@@ -44,7 +25,6 @@ const initialFormErrors = {
 }
 
 const initialDisabled = true;
-
 
 export default function SignUp(props){
    const [ user, setUser ] = useState([]);
@@ -167,7 +147,7 @@ export default function SignUp(props){
          {disabled ? <span className='error'>{formErrors.password}</span> : null }
       </div>
       <div>
-         <StyledTerms>
+         <StyledCheckbox>
             <label> Terms of Service </label>
             <input
                type='checkbox'
@@ -175,7 +155,7 @@ export default function SignUp(props){
                checked={formVals.terms}
                onChange={onChange}
                />  
-         </StyledTerms> 
+         </StyledCheckbox> 
          {disabled ? <span className='error'>{formErrors.terms}</span> : null }
       </div>
          <StyledButton>

@@ -4,7 +4,7 @@ const StyledForm = styled.div`
 form {
    max-width: 500px;
    min-width: 300px;
-   max-height: 800px;
+   max-height: 1000px;
    width: 60%;
    height: 60%;
    margin: 100px auto;
@@ -36,17 +36,23 @@ form {
    padding-bottom: 1rem;
    box-shadow: inset 0px -3px 0px 0px rgba(187, 187, 187, 0.2);
    transition: box-shadow 0.2s ease-in;
- }
+   
+   &:focus {
+     box-shadow: inset 0px -3px 0px 0px ${pr => pr.theme.greenBlue};
+     outline: none;
+    }
+
+    &::-webkit-input-placeholder {
+      opacity: 1;
+      transition: opacity 0.25s ease-out;
+    }
+
+  }
  
- input:focus {
-   box-shadow: inset 0px -3px 0px 0px ${pr => pr.theme.greenBlue};
-   outline: none;
- }
- 
- input::-webkit-input-placeholder {
-   opacity: 1;
-   transition: opacity 0.25s ease-out;
- }
+//*  input::-webkit-input-placeholder {
+//*    opacity: 1;
+//*    transition: opacity 0.25s ease-out;
+//*  }
  
  input:hover::-webkit-input-placeholder,
  input:focus::-webkit-input-placeholder {
@@ -60,6 +66,24 @@ form {
    color: rgba(187, 187, 187, 0.9);
  }
  
+`
+
+//USE THIS FOR CHECKBOXES
+const StyledCheckbox = styled.div`
+   div {
+      justify-self: center;
+      border-bottom: none;
+   }
+   label {
+      padding-left: 0;
+   }
+   input {
+      box-shadow: none;
+      &:focus{
+         //! fixed the shadow on the Terms Checkbox
+         box-shadow: none;
+      }
+   }
 `
 
 const StyledHome = styled.div`
@@ -89,4 +113,4 @@ const StyledButton = styled.div`
 
 `
 
-export { StyledForm, StyledHome, StyledButton }
+export { StyledForm, StyledCheckbox, StyledButton }
