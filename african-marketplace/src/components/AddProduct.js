@@ -52,10 +52,11 @@ const AddProduct = (props) => {
 
 
     return (
-            <div>
+            <div className="product-container">
             <form onSubmit={handleSubmit}>
-                <h3>Fill in this form to <br></br>add your item to the marketplace.</h3>
-                <div>
+                <header className="loginHeader">Add a product to the marketplace</header>
+                <div className="row">
+                    <label className="productlabel">Item Name</label>
                     <input
                     value={item.item_name}
                     onChange={handleChange}
@@ -64,7 +65,8 @@ const AddProduct = (props) => {
                     placeholder="Please enter you item name."
                     />
                 </div>
-                <div>
+                <div className="row">
+                <label className="productlabel">Item Description</label>
                     <input
                     value={item.item_description}
                     onChange={handleChange}
@@ -73,7 +75,8 @@ const AddProduct = (props) => {
                     placeholder="Please describe your item you wish to sell."
                     />
                 </div>
-                <div>
+                <div className="row">
+                <label className="productlabel">Price</label>
                     <input
                     value={item.item_price}
                     onChange={handleChange}
@@ -82,7 +85,8 @@ const AddProduct = (props) => {
                     placeholder="Please enter your price."
                     />
                 </div>
-                <div>
+                <div className="row">
+                <label className="productlabel">Seller's Name</label>
                     <input
                     value={item.username}
                     onChange={handleChange}
@@ -91,7 +95,8 @@ const AddProduct = (props) => {
                     placeholder="Please enter your name."
                     />
                 </div>
-                <div>
+                <div className="row">
+                <label className="productlabel">Region</label>
                     <select
                     value={item.item_country}
                     onChange={handleChange}
@@ -106,7 +111,8 @@ const AddProduct = (props) => {
                     <option value="5">North Africa</option>
                     </select>
                 </div>
-                <button>Please dd your item</button>
+                <div className="row">
+                <button id="loginBtn">Add your item</button></div>
             </form>
         </div>
     );
