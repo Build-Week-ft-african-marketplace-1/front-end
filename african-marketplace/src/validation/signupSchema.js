@@ -5,7 +5,7 @@ const schema = yup.object().shape({
     password: yup.string().required("Password is required"),
     email: yup.string().required("Email is required"),
     name: yup.string().required("Name is required"),
-    terms: yup.boolean().required("Must Accept the Terms of Service"),
+    terms: yup.boolean().oneOf([true],"Must Accept the Terms of Service"),
 
   });
 

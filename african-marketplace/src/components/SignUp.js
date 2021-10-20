@@ -35,15 +35,16 @@ const initialFormVals = {
    terms: false,
 }
 
-const initialDisabled = true;
 
 const initialFormErrors = {
    name:'',
    email: '',
    username: '',
    password: '',
-   terms: '',
+   terms: false,
 }
+
+const initialDisabled = true;
 
 
 export default function SignUp(props){
@@ -97,7 +98,7 @@ export default function SignUp(props){
    }
    const update = ( name, value ) =>{
       validate( name, value ); //validation on the update
-      setFormVals({...formVals, [name]: value})
+      setFormVals({ ...formVals, [name]: value})
    }
 
    //! Validate
@@ -136,7 +137,7 @@ export default function SignUp(props){
                placeholder= 'First Last'
                />
         </div>
-        <div className='errors'>{disabled ? {formErrors.name} : null }</div>
+        {disabled ? <span className='error'>{formErrors.name}</span> : null }
       <div >
          <label> Email: </label>
             <input
@@ -146,6 +147,7 @@ export default function SignUp(props){
                onChange={onChange}
                placeholder='example@example.com'
                />
+        {disabled ? <span className='error'>{formErrors.email}</span> : null }
       </div>
       <div>
          <label> Username:</label>
@@ -156,6 +158,7 @@ export default function SignUp(props){
                onChange={onChange}
                placeholder='Please Enter Username'
                />
+         {disabled ? <span className='error'>{formErrors.username}</span> : null }
       </div>
       <div >
          <label> Password: </label>
@@ -166,20 +169,22 @@ export default function SignUp(props){
                onChange={onChange}
                placeholder= 'Please Enter Password'
                />
-         </div>
-         <div>
-            <StyledTerms>
-               <label> Terms of Service </label>
-               <input
-                  type='checkbox'
-                  name='terms'
-                  checked={formVals.terms}
-                  onChange={onChange}
-                  />  
-            </StyledTerms> 
-         </div>
+         {disabled ? <span className='error'>{formErrors.password}</span> : null }
+      </div>
+      <div>
+         <StyledTerms>
+            <label> Terms of Service </label>
+            <input
+               type='checkbox'
+               name='terms'
+               checked={formVals.terms}
+               onChange={onChange}
+               />  
+         </StyledTerms> 
+         {disabled ? <span className='error'>{formErrors.terms}</span> : null }
+      </div>
          <StyledButton>
-            <button id='submitBtn' type='submit'> Sign Up </button> 
+            <button disabled={disabled} id='submitBtn' type='submit'> Sign Up </button> 
          </StyledButton>
       </section>
       </form>
