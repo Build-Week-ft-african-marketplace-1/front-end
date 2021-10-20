@@ -24,7 +24,6 @@ const StyledTerms = styled.div`
          box-shadow: none;
       }
    }
-
 `
 
 const initialFormVals = {
