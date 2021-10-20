@@ -5,12 +5,12 @@ import { connect } from "react-redux";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const initialFormValues = {
-    name: "",
-    category: "",
-    price_usd: "",
-    description: "",
-    img: "",
-  };
+    item_name: '',
+    item_description: '',
+    item_country: '',
+    item_price: '',
+    username: '',
+}
 
 const AddProduct = (props) => {
     const { push } = useHistory();
@@ -32,7 +32,7 @@ const AddProduct = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        push('/');
+        push('/productlist');
         // const newItem = {
         //     item_country: item.item_country,
         //     item_name: item.item_name,
