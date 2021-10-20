@@ -86,6 +86,7 @@ body {
   color: rgba(187, 187, 187, 0.9);
 }
 
+
 .row button {
   border-radius: 25px;
   width: 80%;
@@ -110,3 +111,4 @@ body {
 .row-end {
   margin-bottom: 2rem;
 }
+

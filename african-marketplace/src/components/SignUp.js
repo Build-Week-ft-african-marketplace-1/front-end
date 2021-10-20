@@ -6,8 +6,20 @@ import styled from "styled-components";
 
 import { StyledForm, StyledButton } from "./styles/OurStyles";
 
-const StyledFormSignup = styled.div`
-
+const StyledTerms = styled.div`
+   div {
+      justify-self: center;
+      border-bottom: none;
+   }
+   label {
+      padding-left: 0;
+   }
+   input{
+      box-shadow: none;
+      &:focus{
+         box-shadow: 0;
+      }
+   }
 
 `
 
@@ -33,7 +45,7 @@ export default function SignUp(props){
    }
 
    const submit = () =>{
-      const newUser ={
+      const newUser = {
          name: formVals.name .trim(),
          email: formVals.email.trim(),
          username: formVals.username.trim(),
@@ -41,7 +53,7 @@ export default function SignUp(props){
          terms: !!formVals.terms
       }
       postNewUser(newUser)
-      console.log(newUser) //proof of working
+      // console.log(newUser) //! proof of working
    }
 
    // useEffect(() => {
@@ -51,7 +63,7 @@ export default function SignUp(props){
                setUser([res.data, ...user]) // will we actually need to spread this here?
             })
             .catch( err => console.error(err))
-            .finally(() => history.push('/login'))
+            .finally(() => history.push('/'))
       }
    //    postNewUser(user)
 
@@ -70,15 +82,18 @@ export default function SignUp(props){
 
    return (
       <StyledForm>
+      <form id="signUp" onSubmit={onSubmit}>
+         <header> Sign Up </header>
       
-      <form id="signUp" className='container' onSubmit={onSubmit}>
+      <section>
         <div>
-         <label> Full Name (first last): </label>
+         <label> Full Name: </label>
             <input
                type='text'
                name='name'
                value={formVals.name}
                onChange={onChange}
+               placeholder= 'First Last'
                />
         </div>
       <div >
@@ -88,46 +103,44 @@ export default function SignUp(props){
                name='email'
                value={formVals.email}
                onChange={onChange}
+               placeholder='example@example.com'
                />
       </div>
-      <div >
-
+      <div>
          <label> Username:</label>
             <input
                type='text'
                name='username'
                value={formVals.username}
                onChange={onChange}
+               placeholder='Please enter username'
                />
       </div>
       <div >
-
          <label> Password: </label>
             <input
                type='password'
                name='password'
                value={formVals.password}
                onChange={onChange}
-               placeholder= 'hello im david'
+               placeholder= ''
                />
-      </div>
-      <div>
-
-         <label> Terms of service 
-
-            <input
-               type='checkbox'
-               name='terms'
-               checked={formVals.terms}
-               onChange={onChange}
-               />   
-         </label>
-      </div>
-      {/* <StyledButton> */}
-         <div className='row' >
-               <button id='submitBtn' type='submit'> Sign Up </button> 
          </div>
-      {/* </StyledButton> */}
+         <div>
+            <StyledTerms>
+               <label> Terms of Service </label>
+               <input
+                  type='checkbox'
+                  name='terms'
+                  checked={formVals.terms}
+                  onChange={onChange}
+                  />  
+            </StyledTerms> 
+         </div>
+         <StyledButton>
+            <button id='submitBtn' type='submit'> Sign Up </button> 
+         </StyledButton>
+      </section>
       </form>
      
    </StyledForm>
