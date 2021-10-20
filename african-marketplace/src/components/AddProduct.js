@@ -33,21 +33,21 @@ const AddProduct = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         push('/productlist');
-        // const newItem = {
-        //     item_country: item.item_country,
-        //     item_name: item.item_name,
-        //     username: item.username,
-        //     item_price: item.item_price,
-        //     item_description: item.item_description,
-        // };
+        const newItem = {
+            item_country: item.item_country,
+            item_name: item.item_name,
+            username: item.username,
+            item_price: item.item_price,
+            item_description: item.item_description,
+        };
         
-        // axios.post(`endpoint`, newItem)
-        // .then(res => {
-        //     props.newItem(res.data)
-        // })
-        // .catch(err => {
-        //     console.log(err)
-        // })
+        axios.post(`https://bw-african-marketplace.herokuapp.com/api/items`, newItem)
+        .then(res => {
+            props.newItem(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
 
 

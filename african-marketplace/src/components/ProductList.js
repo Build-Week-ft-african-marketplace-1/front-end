@@ -3,18 +3,34 @@ import { useHistory } from "react-router";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import styled from "styled-components";
+
+const StyledBox = styled.div`
+    background-color: #008080;
+    width: 40%;
+    border-radius: 10px;
+    margin-bottom: 1em;
+    
+`
+
+const StyledTop = styled.div`
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+`
 
 const ProductList = () => {
-    const [ items, setItems ] = useState([])
+    const [items, setItems] = useState([]);
     const { push } = useHistory();
     
     
     useEffect(() => {
      const getItems = () => {
-      axios.get('')
-         .then(res => {
-             setItems(res.data)
-             console.log(res.data)
+      axios.get(' https://bw-african-marketplace.herokuapp.com/api/items')
+         .then(resp => {
+             setItems(resp.data)
+             console.log(resp.data)
                       }
              )
              .catch(err => {
@@ -24,12 +40,14 @@ const ProductList = () => {
      getItems()
       },[])
      
-      
+      const filteredItems = items.filter(
+        item => item.name
+    );
      
  
-      const handleClick = (e, item) => {
-          e.preventDefault();
-      }
+    //   const handleClick = (e, item) => {
+    //       e.preventDefault();
+    // }
     return (
         <div className="product-container">
         <header >
@@ -37,6 +55,22 @@ const ProductList = () => {
              <p className='productlabel'> Click here if you have items for sale</p>
              <Link to ="/addproduct"><button id='loginBtn'>Add your item</button></Link>
          </header>
+
+         {filteredItems.map(items => {
+                return (
+                    <StyledTop>
+                    <StyledBox key={items.id}>
+                    <h1>{items.name}</h1>
+                        <div>
+                            <h3>Item description:</h3>
+                            <p>{items.description}</p>
+                            <p>{items.price}</p>
+                        </div>
+                    </StyledBox>
+                    </StyledTop>
+                
+                )
+            })}
 
          {/* <div>
              {items.map(item=> (
