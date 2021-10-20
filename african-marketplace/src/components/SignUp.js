@@ -27,8 +27,6 @@ const StyledTerms = styled.div`
 
 `
 
-
-
 const initialFormVals = {
    name:'',
    email: "",
@@ -55,6 +53,9 @@ export default function SignUp(props){
    const [ formErrors, setFormErrors ] = useState(initialFormErrors)
    
    const history = useHistory();
+   
+   
+   
 
    //submit new user
    const onSubmit = (evt) =>{
@@ -99,6 +100,26 @@ export default function SignUp(props){
       setFormVals({...formVals, [name]: value})
    }
 
+   //! Validate
+   const validate = (name, value) =>{
+      yup.reach(schema, name)
+         .validate(value)
+         .then(() =>{
+            setFormErrors({ ...formErrors, [name]: ''})
+         })
+         .catch(err => setFormErrors({ ...formErrors, [name]: err.errors[0]})
+         )
+   }
+   //! disable
+   useEffect(() =>{
+      schema.isValid(formVals)
+         .then(valid =>{
+            setDisabled(!valid)
+         })
+   }, [formVals])
+
+
+//Return STATMENT
    return (
       <StyledForm>
       <form id="signUp" onSubmit={onSubmit}>
@@ -115,6 +136,7 @@ export default function SignUp(props){
                placeholder= 'First Last'
                />
         </div>
+        <div className='errors'>{disabled ? {formErrors.name} : null }</div>
       <div >
          <label> Email: </label>
             <input
@@ -132,7 +154,7 @@ export default function SignUp(props){
                name='username'
                value={formVals.username}
                onChange={onChange}
-               placeholder='Please enter username'
+               placeholder='Please Enter Username'
                />
       </div>
       <div >
@@ -142,7 +164,7 @@ export default function SignUp(props){
                name='password'
                value={formVals.password}
                onChange={onChange}
-               placeholder= ''
+               placeholder= 'Please Enter Password'
                />
          </div>
          <div>
