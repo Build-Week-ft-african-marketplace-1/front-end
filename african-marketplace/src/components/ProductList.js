@@ -5,16 +5,16 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 const ProductList = () => {
-    const [ items, setItems ] = useState([])
+    const [ item, setItem ] = useState([])
     const { push } = useHistory();
     
     
     useEffect(() => {
      const getItems = () => {
-      axios.get('')
+      axios.get('https://reqres.in/api/unknown')
          .then(res => {
-             setItems(res.data)
-             console.log(res.data)
+             console.log(res.data.data)
+             setItem(res.data.data)
                       }
              )
              .catch(err => {
@@ -38,8 +38,8 @@ const ProductList = () => {
              <Link to ="/addproduct"><button id='loginBtn'>Add your item</button></Link>
          </header>
 
-         {/* <div>
-             {items.map(item=> (
+         {<div>
+             {item.map(item=> (
                  <div onClick={e=> handleClick(e, item)} key={item.id}>
                      <h3>{item.item_name}</h3>
                      <p>Description: {item.item_description}</p>
@@ -48,7 +48,7 @@ const ProductList = () => {
                      <p>Seller: {item.username}</p>
                 </div>
              ))}
-         </div> */}
+         </div>}
          </div>
     );
 };
