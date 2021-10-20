@@ -2,53 +2,43 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+import axiosWithAuth from "../utils/axiosWithAuth";
 
 const initialFormValues = {
-    item_name: '',
-    item_description: '',
-    item_country: '',
-    item_price: '',
-    username: '',
+    description: '',
+    id: '',
+    name: '',
+    price: '',
 }
 
 const AddProduct = (props) => {
+    const [isFetching, setIsFetching] = useState(false);
     const { push } = useHistory();
+    const [formValues, setFormValues] = useState(initialFormValues);
 
+    const handleChange = (evt) => {
+        const { name, value } = evt.target;
+        setFormValues({ ...formValues, [name]: value });
+      };
 
-    const [ item, setItem ] = useState({
-        item_name: '',
-        item_description: '',
-        item_price: '',
-        item_country: '',
-        username: '',
-    })
-    const handleChange = e => {
-        setItem({
-            ...item, 
-            [e.target.name]: e.target.value,
-        })
-    }
+      const handleSubmit = (evt) => {
+        evt.preventDefault();
+        push("/productlist");
+        setIsFetching(true);
+        axiosWithAuth()
+          .post(
+            `https://bw-african-marketplace.herokuapp.com/api/items`,
+            formValues
+          )
+          .then((res) => {
+            setIsFetching(false);
+          })
+          .catch((err) => {
+            console.log(err.response.data.message);
+          });
+        };  
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        push('/productlist');
-        const newItem = {
-            item_country: item.item_country,
-            item_name: item.item_name,
-            username: item.username,
-            item_price: item.item_price,
-            item_description: item.item_description,
-        };
-        
-        axios.post(`https://bw-african-marketplace.herokuapp.com/api/items`, newItem)
-        .then(res => {
-            props.newItem(res.data)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    }
+    
 
 
     return (
@@ -58,9 +48,9 @@ const AddProduct = (props) => {
                 <div className="row">
                     <label className="productlabel">Item Name</label>
                     <input
-                    value={item.item_name}
+                    value={formValues.name}
                     onChange={handleChange}
-                    name="item_name"
+                    name="name"
                     type="text"
                     placeholder="Please enter you item name."
                     />
@@ -68,9 +58,9 @@ const AddProduct = (props) => {
                 <div className="row">
                 <label className="productlabel">Item Description</label>
                     <input
-                    value={item.item_description}
+                    value={formValues.description}
                     onChange={handleChange}
-                    name="item_description"
+                    name="description"
                     type="text"
                     placeholder="Please describe your item you wish to sell."
                     />
@@ -78,17 +68,17 @@ const AddProduct = (props) => {
                 <div className="row">
                 <label className="productlabel">Price</label>
                     <input
-                    value={item.item_price}
+                    value={formValues.price}
                     onChange={handleChange}
-                    name="item_price"
+                    name="price"
                     type="text"
                     placeholder="Please enter your price."
                     />
                 </div>
-                <div className="row">
+                {/* <div className="row">
                 <label className="productlabel">Seller's Name</label>
                     <input
-                    value={item.username}
+                    value={formValues.username}
                     onChange={handleChange}
                     name="username"
                     type="text"
@@ -98,7 +88,7 @@ const AddProduct = (props) => {
                 <div className="row">
                 <label className="productlabel">Region</label>
                     <select
-                    value={item.item_country}
+                    value={formValues.country}
                     onChange={handleChange}
                     name="item_country"
                     type="text"
@@ -110,9 +100,10 @@ const AddProduct = (props) => {
                     <option value="4">West Africa</option>
                     <option value="5">North Africa</option>
                     </select>
-                </div>
+                </div> */}
                 <div className="row">
-                <button id="loginBtn">Add your item</button></div>
+                    <button id="loginBtn">Add your item</button>
+                </div>
             </form>
         </div>
     );
