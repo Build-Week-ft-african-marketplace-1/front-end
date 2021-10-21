@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;600&display=swap');
+
 body {
   background-image: url(../../assets/pattern-1-teal.png);
   background-repeat: repeat;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 .login-container {
@@ -18,9 +21,20 @@ body {
   max-width: 1000px;
   min-width: 300px;
   width: 80vw;
-  margin: 100px auto;
+  margin: 50px auto;
   background-color: #ffffff;
   border-radius: 25px;
+}
+
+.pageHeader {
+  max-width: 1000px;
+  min-width: 300px;
+  width: 65vw;
+  margin: auto;
+  margin-top: 25px;
+  font-size: 3rem;
+  color: #ffffff;
+  text-align: left;
 }
 
 .loginHeader {
