@@ -6,18 +6,26 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 const StyledBox = styled.div`
-    background-color: #008080;
-    width: 40%;
-    border-radius: 10px;
+    width: 80%;
+    text-align: left;
     margin-bottom: 1em;
-    
+`
+
+const StyledPrice = styled.div`
+    width: 15%;
+    text-align: left;
+    padding-top: 3rem;
+    margin-bottom: 1em;
+    font-weight: bold;
 `
 
 const StyledTop = styled.div`
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    
+    width: 85%;
+    margin: auto;
+    border-bottom: 1px solid black;
 `
 
 const ProductList = () => {
@@ -49,24 +57,28 @@ const ProductList = () => {
     //       e.preventDefault();
     // }
     return (
+        <div>
+            <div className="pageHeader">Marketplace</div>
         <div className="product-container">
-        <header >
+        {/* <header >
              <h1 className='loginHeader'>Here are items that can be found in the Market</h1>
              <p className='productlabel'> Click here if you have items for sale</p>
              <Link to ="/addproduct"><button id='loginBtn'>Add your item</button></Link>
-         </header>
+         </header> */}
 
          {filteredItems.map(items => {
                 return (
                     <StyledTop>
                     <StyledBox key={items.id}>
                     <h1>{items.name}</h1>
-                        <div>
-                            <h3>Item description:</h3>
+                        
+                            <h5>Item description:</h5>
                             <p>{items.description}</p>
-                            <p>{items.price}</p>
-                        </div>
+                        
                     </StyledBox>
+                    <StyledPrice>
+                    KSh {items.price}
+                    </StyledPrice>
                     </StyledTop>
                 
                 )
@@ -83,6 +95,7 @@ const ProductList = () => {
                 </div>
              ))}
          </div> */}
+         </div>
          </div>
     );
 };

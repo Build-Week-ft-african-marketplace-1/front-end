@@ -4,22 +4,59 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 const StyledNav = styled.nav`
-  background-color: white;
+  /* background-color: white; */
   padding: 2em;
-  opacity: 70%;
+  opacity: 100%;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: flex-end;
+  align-items: center;
 `;
 
 const StyledLink = styled(Link)`
-  padding-left: 2em;
-  padding-right: 2em;
+  padding-left: 1em;
+  padding-right: 1em;
   text-decoration: none;
-  color: black;
-  font-size: 1.5em;
+  color: linen;
+  font-size: 1.25em;
   &:hover {
-    color: teal;
+    color: white;
     text-decoration: underline;
   }
 `;
+
+const StyledLink2 = styled(Link)`
+  padding-left: 1em;
+  padding-right: 1em;
+  text-decoration: none;
+  color: white;
+  font-size: 1.25em;
+`;
+
+const StyledBtnBlue = styled.div`
+  padding: .5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background: #0d7e99;
+  border-radius: 20px;
+  display: inline-block;
+  &:hover {
+    background-color: lightblue;
+  }
+`;
+
+const StyledBtnRed = styled.div`
+  padding: .5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background: #E84A34;
+  border-radius: 20px;
+  display: inline-block;
+  &:hover {
+    background-color: pink;
+  }
+`;
+
 const StyledLogo = styled.img`
   width: 100px;
   position: absolute;
@@ -32,14 +69,16 @@ const NavBar = () => {
   return (
     <div className="nav-header">
       <header>
-        <StyledLogo src="logo.png" />
+        <Link to="/">
+          <StyledLogo src="logo.png" />
+        </Link>
         <StyledNav>
-          <StyledLink to="/">Login</StyledLink>
-          <StyledLink to="/signup">Sign Up</StyledLink>
-          <StyledLink to="/homepage">Home</StyledLink>
-          <StyledLink to="/addproduct">Add Product</StyledLink>
-          <StyledLink to="/productlist">Product List</StyledLink>
-          <StyledLink to="/logout">Logout</StyledLink>
+          <StyledBtnBlue>
+            <StyledLink2 to="/productlist">Marketplace</StyledLink2>
+          </StyledBtnBlue>
+          <StyledBtnRed><StyledLink2 to="/addproduct">Add a Product</StyledLink2></StyledBtnRed>
+          <StyledLink to="/homepage">About</StyledLink>
+          <StyledLink to="/logout">Log out</StyledLink>
         </StyledNav>
       </header>
     </div>
