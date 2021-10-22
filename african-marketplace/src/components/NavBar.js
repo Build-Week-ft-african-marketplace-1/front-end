@@ -76,7 +76,8 @@ const NavBar = () => {
           <StyledBtnBlue>
             <StyledLink2 to="/productlist">Marketplace</StyledLink2>
           </StyledBtnBlue>
-          <StyledBtnRed><StyledLink2 to="/addproduct">Add a Product</StyledLink2></StyledBtnRed>
+          <StyledBtnRed>
+            <StyledLink2 to="/addproduct">Add a Product</StyledLink2></StyledBtnRed>
           <StyledLink to="/homepage">About</StyledLink>
           <StyledLink to="/logout">Log out</StyledLink>
         </StyledNav>
