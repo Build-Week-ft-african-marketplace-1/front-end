@@ -126,7 +126,7 @@ const ProductList = () => {
   // }
 
   // SHOW/HIDE ADD-PRODUCT-FORM
-  const [showDiv, setShowDiv] = useState(true);
+  const [showDiv, setShowDiv] = useState(false);
   const hide = () => {
     setShowDiv(!showDiv);
   };
