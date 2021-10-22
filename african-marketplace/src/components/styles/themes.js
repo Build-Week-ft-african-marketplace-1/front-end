@@ -1,6 +1,7 @@
 export default {
    greenBlue: '#025467',
    headerColor: '#6ed8f0',
+   buttonBack: '#0d7e99',
    white: '#fff',
    red: "#E84A34",
    textColor: 'linen',
