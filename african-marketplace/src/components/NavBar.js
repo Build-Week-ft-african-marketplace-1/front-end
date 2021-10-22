@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
 import Burger from "./hamburgerMenu/Burger.js"
+import Menu from "./hamburgerMenu/Menu.js"
 
 const StyledNav = styled.nav`
   /* background-color: white; */
@@ -19,7 +20,7 @@ const StyledLink = styled(Link)`
   padding-left: 1em;
   padding-right: 1em;
   text-decoration: none;
-  color: linen;
+  color: white;
   font-size: 1.25em;
   &:hover {
     color: white;
@@ -68,10 +69,13 @@ const StyledLogo = styled.img`
 `;
 
 const NavBar = () => {
+  const [ open, setOpen ] = useState(false)
+
   return (
     <div className="nav-header">
       <header>
-      <Burger/>
+      <Burger open = {open} setOpen={setOpen} />
+      <Menu open = {open} setOpen={setOpen} />
         <Link to="/">
           <StyledLogo src="logo.png" />
         </Link>

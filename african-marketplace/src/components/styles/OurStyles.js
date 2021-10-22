@@ -115,8 +115,8 @@ const StyledButton = styled.div`
 
 const StyledBurger = styled.button`
   position: absolute;
-  top: 5%;
-  left: 2rem;
+  top: 7%;
+  right: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -143,5 +143,45 @@ const StyledBurger = styled.button`
   }
   `;
 
+const StyledMenu = styled.nav`
+  transform: translateX(100%);
 
-export { StyledForm, StyledCheckbox, StyledButton, StyledBurger }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: ${({ theme }) => theme.primaryLight};
+  height: 100vh;
+  text-align: left;
+  padding: 2rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: transform 0.3s ease-in-out;
+
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    width: 100%;
+  }
+
+  a {
+    font-size: 2rem;
+    text-transform: uppercase;
+    padding: 2rem 0;
+    font-weight: bold;
+    letter-spacing: 0.5rem;
+    color: ${({ theme }) => theme.primaryDark};
+    text-decoration: none;
+    transition: color 0.3s linear;
+    
+    @media (max-width: ${({ theme }) => theme.mobile}) {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    &:hover {
+      color: ${({ theme }) => theme.primaryHover};
+    }
+  }
+`
+
+
+export { StyledForm, StyledCheckbox, StyledButton, StyledBurger, StyledMenu }
