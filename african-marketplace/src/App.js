@@ -1,4 +1,3 @@
-
 import { Route, Link, Switch, Redirect } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
@@ -21,9 +20,17 @@ import ViewProduct from "./components/ViewProduct";
 import './App.css';
 
 function App() {
+  
+  // SHOW/HIDE ADD-PRODUCT-FORM
+  const [showDiv, setShowDiv] = useState(false);
+  const hide = () => {
+    setShowDiv(!showDiv);
+  };
+
+
   return (
     <div className="App">
-      <NavBar />
+      <NavBar hide={hide} />
       {/* will make this private later */}
       {/* <ProtectedNavBar /> */}
 
@@ -54,7 +61,7 @@ function App() {
         </Route> */}
         {/* make private */}
         <Route path="/productlist">
-          <ProductList />
+          <ProductList showDiv={showDiv} />
         </Route>
         {/* make private */}
         <Route path="/viewproduct">
