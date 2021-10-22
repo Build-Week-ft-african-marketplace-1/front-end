@@ -45,17 +45,6 @@ const StyledBtnBlue = styled.div`
   }
 `;
 
-const StyledBtnRed = styled.div`
-  padding: 0.5rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  background: #e84a34;
-  border-radius: 20px;
-  display: inline-block;
-  &:hover {
-    background-color: pink;
-  }
-`;
 
 const StyledLogo = styled.img`
   width: 100px;
@@ -65,12 +54,8 @@ const StyledLogo = styled.img`
   top: 1.5rem;
 `;
 
-const NavBar = (props) => {
-  const { hide } = props;
+const NavBar = () => {
 
-  const toggleShow = () => {
-    hide();
-  }
 
   return (
     <div className="nav-header">
@@ -82,11 +67,11 @@ const NavBar = (props) => {
           <StyledBtnBlue>
             <StyledLink2 to="/productlist">Marketplace</StyledLink2>
           </StyledBtnBlue>
-          <StyledBtnRed>
-            <button onclick={toggleShow}>
-              Add a Product
-            </button>
-          </StyledBtnRed>
+                            {/* <StyledBtnRed>
+                                <button onclick={toggleShow}>
+                                Add a Product
+                                </button>  </StyledBtnRed>*/}
+         
           <StyledLink to="/homepage">About</StyledLink>
           <StyledLink to="/logout">Log out</StyledLink>
         </StyledNav>

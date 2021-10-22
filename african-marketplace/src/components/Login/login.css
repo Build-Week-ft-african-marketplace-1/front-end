@@ -37,6 +37,13 @@ body {
   text-align: left;
 }
 
+.add-product {
+  width: 85%;
+  padding-top: 2rem;
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
 .loginHeader {
   text-align: center;
   padding: 2rem 0;

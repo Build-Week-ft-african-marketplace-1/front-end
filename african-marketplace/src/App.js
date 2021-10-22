@@ -20,17 +20,9 @@ import ViewProduct from "./components/ViewProduct";
 import './App.css';
 
 function App() {
-  
-  // SHOW/HIDE ADD-PRODUCT-FORM
-  const [showDiv, setShowDiv] = useState(false);
-  const hide = () => {
-    setShowDiv(!showDiv);
-  };
-
-
   return (
     <div className="App">
-      <NavBar hide={hide} />
+      <NavBar />
       {/* will make this private later */}
       {/* <ProtectedNavBar /> */}
 
@@ -61,7 +53,7 @@ function App() {
         </Route> */}
         {/* make private */}
         <Route path="/productlist">
-          <ProductList showDiv={showDiv} />
+          <ProductList />
         </Route>
         {/* make private */}
         <Route path="/viewproduct">

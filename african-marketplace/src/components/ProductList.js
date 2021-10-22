@@ -9,7 +9,7 @@ import AddProduct from "./AddProduct";
 const StyledBox = styled.div`
   width: 80%;
   text-align: left;
-  margin-bottom: 1em;
+  margin: 0.5rem 0 0.5rem 0;
 `;
 
 const StyledPrice = styled.div`
@@ -29,6 +29,22 @@ const StyledTop = styled.div`
   border-bottom: 1px solid black;
 `;
 
+const StyledBtnRed = styled.div`
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background: #e84a34;
+  border-radius: 20px;
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  font-size: 1.25em;
+  cursor: pointer;
+  &:hover {
+    background-color: pink;
+  }
+`;
+
 const initialFormValues = {
   description: "",
   id: "",
@@ -36,14 +52,13 @@ const initialFormValues = {
   price: "",
 };
 
-const ProductList = (props) => {
+const ProductList = () => {
   const [items, setItems] = useState([]);
   const [product, setProduct] = useState([]);
 
   const [isFetching, setIsFetching] = useState(false);
   const { push } = useHistory();
   const [formValues, setFormValues] = useState(initialFormValues);
-  const { showDiv } = props;
 
   useEffect(() => {
     const getItems = () => {
@@ -67,7 +82,6 @@ const ProductList = (props) => {
         .get(`https://reqres.in/api/items`)
         .then((resp) => {
           setProduct(resp.data.data);
-          console.log(resp.data.data);
         })
         .catch((err) => {
           console.log(err);
@@ -89,6 +103,7 @@ const ProductList = (props) => {
       year: formValues.price,
     };
     postNewItem(newProduct);
+    setShowDiv(false);
   };
 
   const postNewItem = (newItem) => {
@@ -109,20 +124,23 @@ const ProductList = (props) => {
   //   const handleClick = (e, item) => {
   //       e.preventDefault();
   // }
-  useEffect(() => {
-    console.log(`showdiv state ${showDiv}`);
-  }, []);
+
+  // SHOW/HIDE ADD-PRODUCT-FORM
+  const [showDiv, setShowDiv] = useState(true);
+  const hide = () => {
+    setShowDiv(!showDiv);
+  };
 
   return (
     <div>
       <div className="pageHeader">Marketplace</div>
       <div className="product-container">
-        {/* <header >
-             <h1 className='loginHeader'>Here are items that can be found in the Market</h1>
-             <p className='productlabel'> Click here if you have items for sale</p>
-             <Link to ="/addproduct"><button id='loginBtn'>Add your item</button></Link>
-         </header> */}
-        {showDiv ? (
+        <div className="add-product">
+          <StyledBox>
+            <StyledBtnRed onClick={hide}>Add a Product</StyledBtnRed>
+          </StyledBox>
+        </div>
+        {showDiv && (
           <div>
             <AddProduct
               values={formValues}
@@ -130,8 +148,6 @@ const ProductList = (props) => {
               change={handleChange}
             />
           </div>
-        ) : (
-          ""
         )}
 
         {product.map((items) => {
