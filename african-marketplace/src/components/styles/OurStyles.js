@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const StyledForm = styled.div`
 form {
@@ -176,14 +177,14 @@ const StyledMenu = styled.nav`
   }
 
   a {
-    font-size: 2rem;
+    // font-size: 2rem;
     // text-transform: uppercase;
     padding: 2rem 0;
     // font-weight: bold;
     // letter-spacing: 0.5rem;
-    color: ${({ theme }) => theme.textColor};
+    // color: ${({ theme }) => theme.textColor};
     text-decoration: none;
-    transition: color 0.3s linear;
+    // transition: color 0.3s linear;
     
     @media (max-width: ${({ theme }) => theme.mobile}) {
       font-size: 1.5rem;
@@ -191,13 +192,44 @@ const StyledMenu = styled.nav`
     }
 
     &:hover {
-      background: ${({ theme }) => theme.red};
-      border-radius: 9px;
-      transition: background 0.3s ease-in-out;
+      // background: ${({ theme }) => theme.red};
+      // border-radius: 9px;
+      // transition: background 0.3s ease-in-out;
 
     }
   }
 `
 
+const StyledLink = styled(Link)`
+  padding-left: 1em;
+  padding-right: 1em;
+  text-decoration: none;
+  color: white;
+  font-size: 1.25em;
+  &:hover {
+    color: white;
+    text-decoration: underline;
+  }
+`;
 
-export { StyledForm, StyledCheckbox, StyledButton, StyledBurger, StyledMenu }
+const StyledLink2 = styled(Link)`
+  padding-left: 1em;
+  padding-right: 1em;
+  text-decoration: none;
+  color: white;
+  font-size: 1.25em;
+`;
+
+const StyledBtnRed = styled.div`
+  padding: .5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background: #E84A34;
+  border-radius: 20px;
+  display: inline-block;
+  &:hover {
+    background-color: pink;
+  }
+`;
+
+export { StyledForm, StyledCheckbox, StyledButton, StyledBurger, StyledMenu, StyledLink, StyledBtnRed, StyledLink2 }
