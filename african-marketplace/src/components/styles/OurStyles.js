@@ -135,7 +135,7 @@ z-index: 10;
 div {
   width: 2rem;
   height: 0.25rem;
-  background: ${({ theme, open }) => open ? theme.red : theme.white};
+  background: ${pr => pr.open ? pr.theme.red : pr.theme.white};
   border-radius: 10px;
   transition: all 0.3s linear;
   position: relative;
@@ -164,7 +164,7 @@ const StyledMenu = styled.nav`
   justify-content: center;
   background: ${({ theme }) => theme.buttonBack};
   height: 100vh;
-  text-align: left;
+  text-align: right;
   padding: 2rem;
   position: absolute;
   top: 0;
@@ -191,7 +191,10 @@ const StyledMenu = styled.nav`
     }
 
     &:hover {
-      color: ${({ theme }) => theme.red};
+      background: ${({ theme }) => theme.red};
+      border-radius: 9px;
+      transition: background 0.3s ease-in-out;
+
     }
   }
 `
