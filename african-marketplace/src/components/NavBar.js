@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
+import Burger from "./hamburgerMenu/Burger.js"
+
 const StyledNav = styled.nav`
   /* background-color: white; */
   padding: 2em;
@@ -69,6 +71,7 @@ const NavBar = () => {
   return (
     <div className="nav-header">
       <header>
+      <Burger/>
         <Link to="/">
           <StyledLogo src="logo.png" />
         </Link>
