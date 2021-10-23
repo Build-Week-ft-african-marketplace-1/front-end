@@ -116,7 +116,7 @@ const StyledButton = styled.div`
 
 const StyledBurger = styled.button`
 position: absolute;
-top: 5%;
+top: 4%;
 right: 2rem;
 display: flex;
 flex-direction: column;

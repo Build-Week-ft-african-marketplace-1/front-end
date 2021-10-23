@@ -9,7 +9,7 @@ const Menu = (props) => {
      <StyledMenu open={props.open}>
         <StyledLink to="/homepage">About</StyledLink>
         <StyledLink to="/logout">Log out</StyledLink>
-        <StyledBtnRed><StyledLink2 to="/addproduct">Add a Product</StyledLink2></StyledBtnRed>
+        <StyledLink to="/login">Login</StyledLink>
 
      </StyledMenu>
    )
