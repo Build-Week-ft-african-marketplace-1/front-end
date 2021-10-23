@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as yup from "yup";
 import loginSchema from "../../validation/loginSchema";
 import { useHistory, Link } from "react-router-dom";
-
+import axiosWithAuth from "../../utils/axiosWithAuth";
 import '../Login/login.css';
 
 
@@ -38,8 +38,17 @@ export default function Login() {
 
   const onSubmit = (evt) => {
     evt.preventDefault();
-    //   submit() authentication
-    // history.push("/marketplace");
+
+    axiosWithAuth()
+        .post('/login', evt.target.value)
+        .then(res => {
+          localStorage.setItem('token', res.data.token);
+          localStorage.setItem('userID', res.data.id);
+          history.push('/productlist');
+        })
+        .catch(err => console.log('Oh-oh, something wrong', err))
+        .finally(history.push('/productlist'));
+
   };
 
   const history = useHistory();

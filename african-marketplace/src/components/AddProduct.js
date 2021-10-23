@@ -4,78 +4,72 @@ import axios from "axios";
 import { connect } from "react-redux";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
-const initialFormValues = {
-    description: '',
-    id: '',
-    name: '',
-    price: '',
-}
-
 const AddProduct = (props) => {
-    const [isFetching, setIsFetching] = useState(false);
-    const { push } = useHistory();
-    const [formValues, setFormValues] = useState(initialFormValues);
+  const { submit, values, change } = props;
+  const { push } = useHistory();
 
-    const handleChange = (evt) => {
-        const { name, value } = evt.target;
-        setFormValues({ ...formValues, [name]: value });
-      };
+  const onChange = (evt) => {
+    const { name, value } = evt.target;
+    change(name, value);
+  };
 
-      const handleSubmit = (evt) => {
-        evt.preventDefault();
-        push("/productlist");
-        setIsFetching(true);
-        axiosWithAuth()
-          .post(
-            `https://bw-african-marketplace.herokuapp.com/api/items`,
-            formValues
-          )
-          .then((res) => {
-            setIsFetching(false);
-          })
-          .catch((err) => {
-            console.log(err.response.data.message);
-          });
-        };  
+  const onSubmit = (evt) => {
+    evt.preventDefault();
+    submit();
+  };
 
-    
+  //   const handleSubmit = (evt) => {
+  //     evt.preventDefault();
+  //     setIsFetching(true);
+  //     axiosWithAuth()
+  //       .post(`https://bw-african-marketplace.herokuapp.com/api/items`, formValues)
+  //       .then((res) => {
+  //         console.log(res);
+  //         setIsFetching(false);
+  //         push("/productlist");
+  //       })
+  //       .catch((err) => {
+  //         console.log(err.response.data.message);
+  //       });
+  //   };
 
-
-    return (
-            <div className="product-container">
-            <form onSubmit={handleSubmit}>
-                <header className="loginHeader">Add a product to the marketplace</header>
-                <div className="row">
-                    <label className="productlabel">Item Name</label>
-                    <input
-                    value={formValues.name}
-                    onChange={handleChange}
-                    name="name"
-                    type="text"
-                    placeholder="Please enter you item name."
-                    />
-                </div>
-                <div className="row">
-                <label className="productlabel">Item Description</label>
-                    <input
-                    value={formValues.description}
-                    onChange={handleChange}
-                    name="description"
-                    type="text"
-                    placeholder="Please describe your item you wish to sell."
-                    />
-                </div>
-                <div className="row">
-                <label className="productlabel">Price</label>
-                    <input
-                    value={formValues.price}
-                    onChange={handleChange}
-                    name="price"
-                    type="text"
-                    placeholder="Please enter your price."
-                    />
-                </div>
-                {/* <div className="row">
+  return (
+    <div className="product-container">
+      <form onSubmit={onSubmit}>
+        <header className="loginHeader">
+          Add a product to the marketplace
+        </header>
+        <div className="row">
+          <label className="productlabel">Item Name</label>
+          <input
+            value={values.name}
+            onChange={onChange}
+            name="name"
+            type="text"
+            placeholder="Please enter you item name."
+          />
+        </div>
+        <div className="row">
+          <label className="productlabel">Item Description</label>
+          <input
+            value={values.description}
+            onChange={onChange}
+            name="description"
+            type="text"
+            placeholder="Please describe your item you wish to sell."
+          />
+        </div>
+        <div className="row">
+          <label className="productlabel">Price</label>
+          <input
+            value={values.price}
+            onChange={onChange}
+            name="price"
+            type="text"
+            placeholder="Please enter your price."
+          />
+        </div>
+        {/* <div className="row">
                 <label className="productlabel">Seller's Name</label>
                     <input
                     value={formValues.username}
@@ -101,12 +95,14 @@ const AddProduct = (props) => {
                     <option value="5">North Africa</option>
                     </select>
                 </div> */}
-                <div className="row">
-                    <button id="loginBtn">Add your item</button>
-                </div>
-            </form>
+        <div className="row">
+          <button id="loginBtn" type="submit">
+            Add your item
+          </button>
         </div>
-    );
+      </form>
+    </div>
+  );
 };
 
 export default AddProduct;
