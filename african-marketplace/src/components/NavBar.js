@@ -14,6 +14,7 @@ const StyledNav = styled.nav`
   flex-flow: wrap;
   justify-content: flex-end;
   align-items: center;
+  margin-right: 10%;
 `;
 
 const StyledLink = styled(Link)`
@@ -36,16 +37,17 @@ const StyledLink2 = styled(Link)`
   font-size: 1.25em;
 `;
 
-const StyledBtnBlue = styled.div`
+const StyledMarket = styled.div`
   padding: 0.5rem;
   margin-left: 1rem;
-  margin-right: 1rem;
+  margin-right: 4rem;
   background: #0d7e99;
   border-radius: 20px;
   display: inline-block;
   &:hover {
     background-color: lightblue;
   }
+
 `;
 
 
@@ -58,6 +60,7 @@ const StyledLogo = styled.img`
 `;
 
 const NavBar = () => {
+  const [ open, setOpen ] = useState(false);
 
   return (
     <div className="nav-header">
@@ -68,17 +71,17 @@ const NavBar = () => {
           <StyledLogo src="logo.png" />
         </Link>
         <StyledNav>
-          <StyledBtnBlue>
+          <StyledMarket>
             <StyledLink2 to="/productlist">Marketplace</StyledLink2>
-          </StyledBtnBlue>
+          </StyledMarket>
           
                             {/* <StyledBtnRed>
                                 <button onclick={toggleShow}>
                                 Add a Product
                                 </button>  </StyledBtnRed>*/}
          
-          <StyledLink to="/homepage">About</StyledLink>
-          <StyledLink to="/logout">Log out</StyledLink>
+          {/* <StyledLink to="/homepage">About</StyledLink>
+          <StyledLink to="/logout">Log out</StyledLink> */}
         </StyledNav>
       </header>
     </div>
