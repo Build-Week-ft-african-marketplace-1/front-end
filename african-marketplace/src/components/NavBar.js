@@ -74,19 +74,19 @@ const NavBar = () => {
   return (
     <div className="nav-header">
       <header>
-      <Burger open = {open} setOpen={setOpen} />
-      <Menu open = {open} setOpen={setOpen} />
         <Link to="/">
           <StyledLogo src="logo.png" />
         </Link>
         <StyledNav>
+      <Burger open = {open} setOpen={setOpen} />
+      <Menu open = {open} setOpen={setOpen} />
           <StyledBtnBlue>
             <StyledLink2 to="/productlist">Marketplace</StyledLink2>
           </StyledBtnBlue>
-          <StyledBtnRed>
-            <StyledLink2 to="/addproduct">Add a Product</StyledLink2></StyledBtnRed>
-          <StyledLink to="/homepage">About</StyledLink>
-          <StyledLink to="/logout">Log out</StyledLink>
+          {/* <StyledBtnRed>
+            <StyledLink2 to="/addproduct">Add a Product</StyledLink2></StyledBtnRed> */}
+          {/* <StyledLink to="/homepage">About</StyledLink>
+          <StyledLink to="/logout">Log out</StyledLink> */}
         </StyledNav>
       </header>
     </div>

@@ -1,15 +1,24 @@
 import React from 'react';
 import { StyledMenu } from '../styles/OurStyles';
 import { bool } from 'prop-types'; 
-import { StyledLink, StyledBtnRed, StyledLink2 } from '../styles/OurStyles';
+import { StyledNav, StyledLink, StyledBtnRed, StyledBtnBlue, StyledLink2 } from '../styles/OurStyles';
 
 const Menu = (props) => {
    
    return (
      <StyledMenu open={props.open}>
+        {/* <StyledNav>  */}
+
         <StyledLink to="/homepage">About</StyledLink>
         <StyledLink to="/logout">Log out</StyledLink>
-        <StyledBtnRed><StyledLink2 to="/addproduct">Add a Product</StyledLink2></StyledBtnRed>
+        <StyledBtnRed>
+           <StyledLink2 to="/addproduct">Add a Product</StyledLink2>
+        </StyledBtnRed>
+        <StyledBtnBlue>
+            <StyledLink2 to="/productlist">Marketplace</StyledLink2>
+         </StyledBtnBlue>
+
+        {/* </StyledNav> */}
 
      </StyledMenu>
    )

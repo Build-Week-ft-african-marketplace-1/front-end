@@ -90,6 +90,17 @@ const StyledCheckbox = styled.div`
 const StyledHome = styled.div`
 
 `
+
+const StyledNav = styled.nav`
+  /* background-color: white; */
+  // padding: 2em;
+  opacity: 100%;
+  // display: flex;
+  // flex-flow: wrap;
+  // justify-content: flex-end;
+  align-items: center;
+`;
+
 //USE THIS FOR BUTTONS
 const StyledButton = styled.div`
 
@@ -161,6 +172,7 @@ const StyledMenu = styled.nav`
   transform: ${ ({open}) => open ? 'translateX(0)': 'translateX(100%)'};
 
   display: flex;
+  z-index: 4;
   flex-direction: column;
   justify-content: center;
   background: ${({ theme }) => theme.buttonBack};
@@ -232,4 +244,27 @@ const StyledBtnRed = styled.div`
   }
 `;
 
-export { StyledForm, StyledCheckbox, StyledButton, StyledBurger, StyledMenu, StyledLink, StyledBtnRed, StyledLink2 }
+const StyledBtnBlue = styled.div`
+  padding: .5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background: #0d7e99;
+  border-radius: 20px;
+  display: inline-block;
+  &:hover {
+    background-color: lightblue;
+  }
+`;
+
+export { 
+  StyledNav, 
+  StyledForm, 
+  StyledCheckbox, 
+  StyledButton, 
+  StyledBurger, 
+  StyledMenu, 
+  StyledLink, 
+  StyledLink2, 
+  StyledBtnRed, 
+  StyledBtnBlue,
+ }
