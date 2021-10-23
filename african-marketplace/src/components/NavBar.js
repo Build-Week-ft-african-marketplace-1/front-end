@@ -58,6 +58,7 @@ const StyledLogo = styled.img`
 `;
 
 const NavBar = () => {
+  const [ open, setOpen ] = useState(false);
 
   return (
     <div className="nav-header">
