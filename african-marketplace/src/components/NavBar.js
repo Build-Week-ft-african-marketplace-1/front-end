@@ -37,7 +37,7 @@ const StyledLink2 = styled(Link)`
 `;
 
 const StyledBtnBlue = styled.div`
-  padding: .5rem;
+  padding: 0.5rem;
   margin-left: 1rem;
   margin-right: 1rem;
   background: #0d7e99;
@@ -48,17 +48,6 @@ const StyledBtnBlue = styled.div`
   }
 `;
 
-const StyledBtnRed = styled.div`
-  padding: .5rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  background: #E84A34;
-  border-radius: 20px;
-  display: inline-block;
-  &:hover {
-    background-color: pink;
-  }
-`;
 
 const StyledLogo = styled.img`
   width: 100px;
@@ -69,7 +58,6 @@ const StyledLogo = styled.img`
 `;
 
 const NavBar = () => {
-  const [ open, setOpen ] = useState(false)
 
   return (
     <div className="nav-header">
@@ -83,8 +71,12 @@ const NavBar = () => {
           <StyledBtnBlue>
             <StyledLink2 to="/productlist">Marketplace</StyledLink2>
           </StyledBtnBlue>
-          <StyledBtnRed>
-            <StyledLink2 to="/addproduct">Add a Product</StyledLink2></StyledBtnRed>
+          
+                            {/* <StyledBtnRed>
+                                <button onclick={toggleShow}>
+                                Add a Product
+                                </button>  </StyledBtnRed>*/}
+         
           <StyledLink to="/homepage">About</StyledLink>
           <StyledLink to="/logout">Log out</StyledLink>
         </StyledNav>
